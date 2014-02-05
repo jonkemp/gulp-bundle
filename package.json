@@ -1,0 +1,37 @@
+{
+  "name": "gulp-bundle",
+  "version": "0.1.0",
+  "description": "Parse build blocks in HTML to concatenate JavaScript and CSS files.",
+  "license": "MIT",
+  "repository": "jonkemp/gulp-bundle",
+  "author": {
+    "name": "Jonathan Kemp",
+    "email": "kempdogg@gmail.com",
+    "url": "http://jonkemp.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpfriendly",
+    "scripts",
+    "css",
+    "optimize",
+    "bundle",
+    "minify",
+    "concat"
+  ],
+  "dependencies": {
+    "glob": "~3.2.8",
+    "gulp": "~3.5.1",
+    "gulp-concat": "~2.1.7",
+    "gulp-if": "0.0.4",
+    "gulp-minify-css": "~0.2.0",
+    "gulp-uglify": "~0.1.0",
+    "lodash": "~2.4.1",
+    "useref": "~0.1.0"
+  }
+}
