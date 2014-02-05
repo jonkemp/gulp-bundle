@@ -74,7 +74,7 @@ Default: `dist/`
 Where to put the files.
 
 
-#### minify.autosemicolon
+#### options.minify
 
 Type: `Boolean`  
 Default: `true`
