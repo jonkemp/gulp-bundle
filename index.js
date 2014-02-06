@@ -1,4 +1,4 @@
-var glob = require('glob'),
+var Glob = require('glob').Glob,
     fs = require('fs'),
     path = require('path'),
     _ = require('lodash'),
@@ -9,15 +9,19 @@ var glob = require('glob'),
     uglify = require('gulp-uglify'),
     minifycss = require('gulp-minify-css');
 
-module.exports = function(opt){
+module.exports = function(globs, opt){
     opt = _.extend({
-        appDir: 'app/',
-        buildDir: 'dist/',
+        appDir: 'app',
+        buildDir: 'dist',
         minify: true
     }, opt);
 
+    if (!globs) {
+        globs = opt.appDir + '/*.html';
+    }
+
     return function () {
-        glob(opt.appDir + '*.html', function (err, files) {
+        return new Glob(globs, opt, function (err, files) {
             _.forEach(files, function (p) {
                 var assets = useref(fs.readFileSync(path.normalize(p), { encoding: 'utf-8'}))[1];
                 var css = assets.css;
@@ -25,7 +29,7 @@ module.exports = function(opt){
 
                 function prefixPath(paths) {
                     _.forEach(paths, function (val, i) {
-                        paths[i] = opt.appDir + val;
+                        paths[i] = opt.appDir + '/' + val;
                     });
                     return paths;
                 }
@@ -36,7 +40,7 @@ module.exports = function(opt){
                     return gulp.src(paths)
                         .pipe(concat(path.basename(name)))
                         .pipe(gulpif(opt.minify, minifycss()))
-                        .pipe(gulp.dest(opt.buildDir + path.dirname(name)));
+                        .pipe(gulp.dest(opt.buildDir + '/' + path.dirname(name)));
                 });
 
                 _.forEach(js, function (paths, name) {
@@ -45,7 +49,7 @@ module.exports = function(opt){
                     return gulp.src(paths)
                         .pipe(concat(path.basename(name)))
                         .pipe(gulpif(opt.minify, uglify()))
-                        .pipe(gulp.dest(opt.buildDir + path.dirname(name)));
+                        .pipe(gulp.dest(opt.buildDir + '/' + path.dirname(name)));
                 });
             });
         });

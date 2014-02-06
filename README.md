@@ -20,7 +20,7 @@ npm install --save-dev gulp-bundle
 var gulp = require('gulp'),
     bundle = require('gulp-bundle');
 
-gulp.task('bundle', bundle());
+gulp.task('bundle', bundle('./app/*.html'));
 ```
 
 With options:
@@ -29,9 +29,9 @@ With options:
 var gulp = require('gulp'),
     bundle = require('gulp-bundle');
 
-gulp.task('bundle', bundle({
-    appDir: 'app/',
-    buildDir: 'dist/',
+gulp.task('bundle', bundle('./app/*.html', {
+    appDir: 'app',
+    buildDir: 'dist',
     minify: true
 }));
 ```
@@ -57,13 +57,24 @@ The build block syntax is `build:type path/filename`. Valid types are `js` and `
 
 ## API
 
-### bundle(options)
+### bundle(pattern[, options])
 
+Pattern should be the path to your HTML files.
+
+#### pattern
+Type: `String`
+
+Pattern to be matched.
+
+#### options
+Type: `Object`
+
+Options to pass to [node-glob](https://github.com/isaacs/node-glob).
 
 #### options.appDir
 
 Type: `String`  
-Default: `app/`
+Default: `app`
 
 Where to find the files.
 
@@ -71,7 +82,7 @@ Where to find the files.
 #### options.buildDir
 
 Type: `String`  
-Default: `dist/`
+Default: `dist`
 
 Where to put the files.
 
