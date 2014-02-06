@@ -1,6 +1,8 @@
 # [gulp](https://github.com/wearefractal/gulp)-bundle [![Build Status](https://travis-ci.org/jonkemp/gulp-bundle.png?branch=master)](https://travis-ci.org/jonkemp/gulp-bundle)
 
-> Parse build blocks in HTML to concatenate JavaScript and CSS files. An option to minify files is available.
+> Parse build blocks in HTML to concatenate JavaScript and CSS files. A minify option is available.
+
+This is not a gulp plugin. It is meant to be used together with [gulp-useref](https://github.com/jonkemp/gulp-useref) to parse the build blocks in the HTML files, bundle those assets and export the files. This makes it easier to bundle components separately, for example Bower files.
 
 
 ## Install
