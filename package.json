@@ -1,6 +1,6 @@
 {
   "name": "gulp-bundle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Parse build blocks in HTML to concatenate JavaScript and CSS files.",
   "license": "MIT",
   "repository": "jonkemp/gulp-bundle",
@@ -28,9 +28,9 @@
     "glob": "~3.2.8",
     "gulp": "~3.5.1",
     "gulp-concat": "~2.1.7",
-    "gulp-if": "0.0.4",
-    "gulp-minify-css": "~0.2.0",
-    "gulp-uglify": "~0.1.0",
+    "gulp-if": "~0.0.5",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-uglify": "~0.2.0",
     "lodash": "~2.4.1",
     "useref": "~0.1.0"
   }
