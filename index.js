@@ -29,7 +29,7 @@ module.exports = function(globs, opt){
 
                 function prefixPath(paths) {
                     _.forEach(paths, function (val, i) {
-                        paths[i] = opt.appDir + '/' + val;
+                        paths[i] = path.join(opt.appDir, val);
                     });
                     return paths;
                 }
@@ -40,7 +40,7 @@ module.exports = function(globs, opt){
                     return gulp.src(paths)
                         .pipe(concat(path.basename(name)))
                         .pipe(gulpif(opt.minify, minifycss()))
-                        .pipe(gulp.dest(opt.buildDir + '/' + path.dirname(name)));
+                        .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
                 });
 
                 _.forEach(js, function (paths, name) {
@@ -49,7 +49,7 @@ module.exports = function(globs, opt){
                     return gulp.src(paths)
                         .pipe(concat(path.basename(name)))
                         .pipe(gulpif(opt.minify, uglify()))
-                        .pipe(gulp.dest(opt.buildDir + '/' + path.dirname(name)));
+                        .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
                 });
             });
         });
