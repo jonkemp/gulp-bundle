@@ -7,13 +7,15 @@ var Glob = require('glob').Glob,
     gulpif = require('gulp-if'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    minifycss = require('gulp-minify-css');
+    minifyCss = require('gulp-minify-css');
 
 module.exports = function(globs, opt){
     opt = _.extend({
         appDir: 'app',
         buildDir: 'dist',
-        minify: true
+        minify: true,
+        minifyCss: {},
+        minifyJs: {}
     }, opt);
 
     if (!globs) {
@@ -39,7 +41,7 @@ module.exports = function(globs, opt){
 
                     return gulp.src(paths)
                         .pipe(concat(path.basename(name)))
-                        .pipe(gulpif(opt.minify, minifycss()))
+                        .pipe(gulpif(opt.minify, minifyCss(opt.minifyCss)))
                         .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
                 });
 
@@ -48,7 +50,7 @@ module.exports = function(globs, opt){
 
                     return gulp.src(paths)
                         .pipe(concat(path.basename(name)))
-                        .pipe(gulpif(opt.minify, uglify()))
+                        .pipe(gulpif(opt.minify, uglify(opt.minifyJs)))
                         .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
                 });
             });

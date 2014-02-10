@@ -95,6 +95,22 @@ Default: `true`
 Minifies CSS and JavaScript files.
 
 
+#### options.minifyCss
+
+Type: `Object`  
+Default: `{}`
+
+Options to pass to [gulp-minify-css](https://github.com/jonathanepollack/gulp-minify-css). Check the documentation to see the options.
+
+
+#### options.minifyJs
+
+Type: `Object`  
+Default: `{}`
+
+Options to pass to [gulp-uglify](https://github.com/terinjokes/gulp-uglify). Check the documentation to see the options.
+
+
 ## License
 
 MIT © [Jonathan Kemp](http://jonkemp.com)
