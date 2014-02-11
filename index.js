@@ -37,21 +37,25 @@ module.exports = function(globs, opt){
                 }
 
                 _.forEach(css, function (paths, name) {
-                    prefixPath(paths);
+                    if (name !== '' && paths.length) {
+                        prefixPath(paths);
 
-                    return gulp.src(paths)
-                        .pipe(concat(path.basename(name)))
-                        .pipe(gulpif(opt.minify, minifyCss(opt.minifyCss)))
-                        .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
+                        return gulp.src(paths)
+                            .pipe(concat(path.basename(name)))
+                            .pipe(gulpif(opt.minify, minifyCss(opt.minifyCss)))
+                            .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
+                    }
                 });
 
                 _.forEach(js, function (paths, name) {
-                    prefixPath(paths);
+                    if (name !== '' && paths.length) {
+                        prefixPath(paths);
 
-                    return gulp.src(paths)
-                        .pipe(concat(path.basename(name)))
-                        .pipe(gulpif(opt.minify, uglify(opt.minifyJs)))
-                        .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
+                        return gulp.src(paths)
+                            .pipe(concat(path.basename(name)))
+                            .pipe(gulpif(opt.minify, uglify(opt.minifyJs)))
+                            .pipe(gulp.dest(path.join(opt.buildDir, path.dirname(name))));
+                    }
                 });
             });
         });
