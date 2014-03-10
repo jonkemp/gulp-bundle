@@ -1,3 +1,7 @@
+# Deprecation Notice
+
+Just use [gulp-useref](https://github.com/jonkemp/gulp-useref) instead. gulp-useref now handles concatenation of files from build blocks, so gulp-bundle is no longer needed.
+
 # [gulp](https://github.com/wearefractal/gulp)-bundle [![Build Status](https://travis-ci.org/jonkemp/gulp-bundle.png?branch=master)](https://travis-ci.org/jonkemp/gulp-bundle)
 
 > Parse build blocks in HTML to concatenate JavaScript and CSS files. A minify option is available.
